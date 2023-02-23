@@ -1,0 +1,2 @@
+# Scanner
+Automate pentesting tasks

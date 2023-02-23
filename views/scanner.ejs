@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="/images/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+        <%= title %>
+      </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/scanner">Scan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/projects/all">Projects</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/doc">API DOC</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <main class="container-fluid mt-3 mb-3">
+      <h3 class="p-2">Scanner</h3>
+      
+      <ul class="nav nav-tabs justify-content-center" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" role="tab" data-bs-toggle="tab" aria-selected="true" href="#target">Target Info</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" role="tab" data-bs-toggle="tab" href="#options" aria-selected="false">Options</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" role="tab" data-bs-toggle="tab" href="#report" aria-selected="false">Report</a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="target" class="tab-pane fade show active  text-center" role="tabpanel">
+          <div class="form-floating  mb-3 mt-3">
+
+            <input type="text" class="form-control" id="target-url" value="" placeholder="&lt;https://example.com/index.php&gt;">
+            <label for="target-url">*Target URI: &lt;https://example.com/index.php&gt;</label>
+
+          </div>
+
+          <select class="form-select" aria-label="Default select example" id="target-method">
+            <option value="GET" selected>GET</option>
+            <option value="POST">POST</option>
+          </select>
+
+          <div class="form-floating mb-3 mt-3">
+            <input type="text" class="form-control" id="target-post-data" placeholder="param=value&parm1=value1&...">
+            <label>POST Data: &lt;param=value&gt;</label>
+          </div>
+
+          <div id="headers-container">
+          <div id="header-container-1" class="input-group mb-3">
+            <span class="input-group-text">Header</span>
+            <input id="header-1" type="text" class="form-control" placeholder="&lt;Content-Type&gt;" value="Content-Type">
+            <span class="input-group-text">Value</span>
+            <input id="header-value-1" type="text" class="form-control" placeholder="&lt;application/x-www-form-urlencoded&gt;" value="application/x-www-form-urlencoded">
+            <button id="remove-header-1" type="button" class="btn btn-outline-danger">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-node-minus-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M16 8a5 5 0 0 1-9.975.5H4A1.5 1.5 0 0 1 2.5 10h-1A1.5 1.5 0 0 1 0 8.5v-1A1.5 1.5 0 0 1 1.5 6h1A1.5 1.5 0 0 1 4 7.5h2.025A5 5 0 0 1 16 8zm-2 0a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5A.5.5 0 0 0 14 8z"/>
+              </svg>
+                Remove
+              </button>
+              <button id="add-header-1" type="button" class="btn btn-outline-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-node-plus-fill" viewBox="0 0 16 16">
+                  <path d="M11 13a5 5 0 1 0-4.975-5.5H4A1.5 1.5 0 0 0 2.5 6h-1A1.5 1.5 0 0 0 0 7.5v1A1.5 1.5 0 0 0 1.5 10h1A1.5 1.5 0 0 0 4 8.5h2.025A5 5 0 0 0 11 13zm.5-7.5v2h2a.5.5 0 0 1 0 1h-2v2a.5.5 0 0 1-1 0v-2h-2a.5.5 0 0 1 0-1h2v-2a.5.5 0 0 1 1 0z"></path>
+                </svg>
+                Add
+              </button>
+          </div>
+          <div id="header-container-2" class="input-group mb-3 mt-3">
+            <span class="input-group-text">Header</span>
+            <input id="header-2" type="text" class="form-control" placeholder="&lt;Content-Type&gt;">
+            <span class="input-group-text">Value</span>
+            <input id="header-value-2" type="text" class="form-control" placeholder="&lt;application/x-www-form-urlencoded&gt;">
+            <button id="remove-header-2" type="button" class="btn btn-outline-danger">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-node-minus-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M16 8a5 5 0 0 1-9.975.5H4A1.5 1.5 0 0 1 2.5 10h-1A1.5 1.5 0 0 1 0 8.5v-1A1.5 1.5 0 0 1 1.5 6h1A1.5 1.5 0 0 1 4 7.5h2.025A5 5 0 0 1 16 8zm-2 0a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5A.5.5 0 0 0 14 8z"/>
+              </svg>
+                Remove
+              </button>
+              <button id="add-header-2" type="button" class="btn btn-outline-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-node-plus-fill" viewBox="0 0 16 16">
+                  <path d="M11 13a5 5 0 1 0-4.975-5.5H4A1.5 1.5 0 0 0 2.5 6h-1A1.5 1.5 0 0 0 0 7.5v1A1.5 1.5 0 0 0 1.5 10h1A1.5 1.5 0 0 0 4 8.5h2.025A5 5 0 0 0 11 13zm.5-7.5v2h2a.5.5 0 0 1 0 1h-2v2a.5.5 0 0 1-1 0v-2h-2a.5.5 0 0 1 0-1h2v-2a.5.5 0 0 1 1 0z"></path>
+                </svg>
+                Add
+              </button>
+          </div>
+          </div>
+          
+
+
+          <div class="input-group mb-3">
+            <span class="input-group-text">Cookie</span>
+            <textarea class="form-control" id="target-cookies" placeholder="Name=Value;"></textarea>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text">Notes</span>
+            <textarea class="form-control" id="target-notes" placeholder="Additional Notes"></textarea>
+          </div>
+        </div>
+
+
+        <div id="options" class="tab-pane fade text-center" role="tabpanel">
+          <div class="input-group mb-3 mt-3">
+            <span class="input-group-text" id="basic-addon1">Canary</span>
+            <input type="text" id="canary" class="form-control" placeholder="(default: random)" aria-label="Canary" aria-describedby="basic-addon1">
+          </div>
+          
+          <select class="form-select" id="follow-redirect" aria-label="Follow redirect: (default: false)">
+            <option selected>Follow redirect (default: false)</option>
+            <option value="false">false</option>
+            <option value="true">true</option>
+          </select>
+
+          <div class="input-group mb-3 mt-3">
+            <span class="input-group-text" id="basic-addon2">Terminate if response contains</span>
+            <input type="text" id="terminate-msg" class="form-control" placeholder="(default: null)" aria-label="Terminate Msg" aria-describedby="basic-addon2">
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">Terminate if status code equals</span>
+            <input type="text" id="terminate-status-code" class="form-control" placeholder="(default: null)" aria-label="Terminate Status Code" aria-describedby="basic-addon3">
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon4">Terminate if redirect to</span>
+            <input type="text" id="terminate-redirect" class="form-control" placeholder="(default: null)" aria-label="Terminate Redirect" aria-describedby="basic-addon4">
+          </div>
+          
+          <div class="input-group mb-3">
+            <span class="input-group-text">timeout</span>
+            <input type="number" id="timeout" placeholder="(default: 10)" class="form-control" aria-label="Response timeout">
+            <span class="input-group-text">sec</span>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text">Rate limit</span>
+            <input type="number" id="ratelimit" placeholder="(default: 10)" class="form-control" aria-label="Response timeout">
+            <span class="input-group-text">request/sec</span>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="proxy" placeholder="http://127.0.0.1:8080/">
+            <label for="proxy">Proxy: "http://127.0.0.1:8080/"</label>
+          </div>
+
+
+        </div>
+
+
+        <div id="report" class="tab-pane fade text-center" role="tabpanel">
+          <div class="input-group mb-3 mt-3">
+            <span class="input-group-text">Report first n</span>
+            <input type="Number" id="report-first-n" placeholder="(default: 2)" class="form-control" aria-label="Report first n HTTP request">
+            <span class="input-group-text">HTTP request</span>
+          </div>
+          <select class="form-select" id="reporting" aria-label="Reporting">
+            <option selected value="live">Live reporting</option>
+            <option value="after-terminate">Report after terminate</option>
+          </select>
+          <div class="mt-3"></div>
+          <select class="form-select" id="report-forms" aria-label="Report Forms">
+            <option selected>Report forms (default: false)</option>
+            <option value="false">false</option>
+            <option value="true">true</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="text-center">
+        <button type="button" id="start-attack" class="btn btn-outline-primary mt-3 w-auto">Start Attack</button>
+      </div>
+    </main>
+
+    <footer class="bg-light d-flex flex-row justify-content-center align-items-center mt-auto">
+      <p><cite>&#169; XSS Scanner</cite></p>
+    </footer>
+
+
+    <script type="text/javascript" src="/javascripts/scanner.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

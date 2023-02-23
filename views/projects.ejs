@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="/images/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+        <%= title %>
+      </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/scanner">Scan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/projects/all">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/doc">API DOC</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="mt-3 w-70">
+          <!-- status alert -->
+          <div id="status-message"></div>
+          <!-- Target info -->
+          <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"><%= id %></h5>
+                <h6 class="card-subtitle"><%= notes %></h6>
+                <code>
+                    <br>
+                    <%= method %> <%= uri %> HTTP/1.1<br>
+                    <% for (var i=0; i<headers.length; i++) { %>
+                        <%= headers[i].name %>: <%= headers[i].value %><br>
+                    <% } %>
+                    <% if (cookies != "" && cookies != null) { %>
+                        Cookies: <%= cookies %><br>
+                    <% } %>
+                    <br>
+                    <% if (postData!=null) {%>
+                        <%= postData %>
+                    <% } %>
+                </code>
+
+            </div>
+          </div>
+          <div class="accordion accordion-flush" id="accordionVulns">
+           
+          </div>
+    </main>
+    <footer class="bg-light d-flex flex-row justify-content-center align-items-center mt-auto">
+      <p><cite>&#169; XSS Scanner</cite></p>
+    </footer>
+
+    <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/javascripts/ProjectResults.js"></script>
+  </body>
+</html>
